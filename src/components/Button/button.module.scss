@@ -1,0 +1,20 @@
+.button {
+    height: 42px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--purple-800);
+
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700px;
+
+    align-items: center;
+    text-align: center;
+
+    transition: 0.4s;
+    &:hover {
+        opacity: 0.85;
+    }
+}

@@ -1,0 +1,50 @@
+:root {
+    --white: #fff;
+    --purple-200: #d4cdf4;
+    --purple-500: #8b85c1;
+    --purple-800: #7a6f9b;
+    --gray-200: #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--purple-500);
+
+    height: 100vh;
+    width: 100vw;
+    
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    @media(max-width: 1080px) {
+        font-size: 93.75%;
+    }
+
+    @media(max-width: 720px) {
+        font-size: 87.5%;
+    }
+}
+
+body, input, textarea, button {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 700;
+}
+
+button {
+    cursor: pointer;
+}

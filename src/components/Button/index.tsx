@@ -1,3 +1,4 @@
+import styles from "./button.module.scss"
 
 interface ButtonProps {
     text: string;
@@ -6,7 +7,7 @@ interface ButtonProps {
 
 export function Button({text, disabled}: ButtonProps) {
     return(
-        <button>
+        <button className={styles.button}>
             {text}
         </button>
     );

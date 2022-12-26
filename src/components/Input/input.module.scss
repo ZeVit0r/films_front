@@ -1,0 +1,26 @@
+.input {
+    outline: 0;
+    color: var(--purple-500);
+    font-weight: bold;
+
+    height: 42px;
+    width: 240px;
+    padding: 12px;
+    margin-bottom: 8px;
+
+    border-radius: 4px;
+    border: 0;
+
+    box-shadow: 0 0 0 0;
+
+    border: 1px solid var(--purple-500);
+
+    &::placeholder {
+        color: var(--purple-500);
+    }
+
+    transition: 0.4s;
+    &:hover {
+        border: 1px solid var(--purple-200);
+    }
+}

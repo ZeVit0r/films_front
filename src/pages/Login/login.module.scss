@@ -1,0 +1,30 @@
+.logo {
+    color: var(--purple-800);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    color: var(--purple-800);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+
+    font-weight: 200;
+}
+
+.register {
+    margin-top: 4px;
+    justify-content: left;
+
+    color: var(--purple-800);
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+    &:hover {
+        opacity: 0.85;
+    }
+
+    align-self: flex-end;
+}
