@@ -1,18 +1,22 @@
-import { useState } from 'react'
-import { RegisterPage } from './pages/Register'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import { LoginPage } from './pages/Login'
+import { RegisterPage } from './pages/Register'
 import { Home } from './pages/Home'
+import { Favorities } from './pages/Favorities'
+import { Reviews } from './pages/Reviews'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      {/* <LoginPage /> */}
-      {/* <RegisterPage /> */}
-      <Home />
-    </div>
+    <BrowserRouter> 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorities" element={<Favorities />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

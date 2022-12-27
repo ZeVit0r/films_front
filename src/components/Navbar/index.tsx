@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import styles from './navbar.module.scss'
 
 import { GiFilmSpool, GiFilmStrip, GiRoundStar, GiNotebook } from "react-icons/gi"
@@ -16,17 +18,18 @@ export function Navbar( {}:NavbarProps ){
                 <h1 className={styles.logo}>IFilms</h1>
             </div>
             <ul className={styles.menu}>
-                <li className={styles.li_selected}>
+                {/* <li className={styles.li_selected}> */}
+                <li>
                     <GiFilmStrip color="#FFF" size={24} />
-                    <a className={styles.button_menu_selected}>Filmes</a>
+                    <Link to="/" className={styles.button_menu}>Filmes</Link>
                 </li>
                 <li>
                     <GiRoundStar color="#FFF" size={24} />
-                    <a className={styles.button_menu}>Meus Favoritos</a>
+                    <Link to="/favorities" className={styles.button_menu}>Meus Favoritos</Link>
                 </li>
                 <li>
                     <GiNotebook color="#FFF" size={24} />
-                    <a className={styles.button_menu}>Meus Reviews</a>
+                    <Link to="/reviews" className={styles.button_menu}>Meus Reviews</Link>
                 </li>
             </ul>
             <div className={styles.logout}>

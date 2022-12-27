@@ -2,11 +2,11 @@ import { ReactElement } from "react";
 
 import styles from "./card.module.scss"
 
-interface CardProps {
+interface CardLoginProps {
     children: ReactElement[]
 }
 
-export function Card ({children}: CardProps){
+export function CardLogin ({children}: CardLoginProps){
     return(
         <div className={styles.card}>
             {children}

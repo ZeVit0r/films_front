@@ -47,14 +47,16 @@
         .button_menu {
             display: inline-block;
             text-decoration: none;
-            margin-left: 4px;        
-        }
+            margin-left: 4px;
+            color: var(--gray-200);
 
-        transition: color 0.5s;
-        &:hover {
-            color: var(--white);
+            transition: color 0.5s;
+            &:hover {
+                color: var(--white);
+            }
+
         }
-        
+       
         & .button_menu_selected {
             display: inline-block;
             text-decoration: none;

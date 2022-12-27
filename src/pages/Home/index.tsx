@@ -5,6 +5,8 @@ export function Home(){
     return(
         <div className={styles.home}>
             <Navbar />
+
+            <h1>Home</h1>
         </div>
     )
 }
