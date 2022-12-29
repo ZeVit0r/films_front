@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { Button } from "../../components/Button";
@@ -8,7 +8,7 @@ import { Input } from "../../components/Input";
 import {GiFilmSpool} from "react-icons/gi"
 
 import styles from "./register.module.scss"
-import { api } from '../../services/api';
+import { tstapi } from '../../services/api';
 
 export function RegisterPage() {
     const [name, setName] = useState('');
@@ -17,9 +17,9 @@ export function RegisterPage() {
 
     const navigate = useNavigate();
 
-    async function register(){
+    async function register(event:FormEvent){
         try{
-            await api.post('/auth/signup',{
+            await tstapi.post('/auth/signup',{
                 name: name,
                 email: email,
                 password: password
@@ -29,7 +29,7 @@ export function RegisterPage() {
             setEmail('');
             setpassword('');
 
-            navigate('/login')
+            navigate('/')
         } catch(e){
             alert('Ja existe uma conta vinculada a esse email!')
             setName('');
@@ -39,15 +39,17 @@ export function RegisterPage() {
     }
 
     return(
-        <CardLogin>
-            <GiFilmSpool color="#7a6f9b" size={84}/>
-            <h1 className={styles.logo}>IFilms</h1>
-            <h2 className={styles.title}>register your account</h2>
-            <Input placeholde='Your Name' type='text' value={name} onChange={setName}/>
-            <Input placeholde='E-mail' type='email' value={email} onChange={setEmail}/>
-            <Input placeholde='Password' type='password' value={password} onChange={setpassword}/>
-            <Button text='Register' disabled={false} onClick={register}/>
-            <Link to="/login" className={styles.login}>I already have an account!</Link>
-        </CardLogin>
+        <div className={styles.content}>
+            <CardLogin>
+                <GiFilmSpool color="#7a6f9b" size={84}/>
+                <h1 className={styles.logo}>IFilms</h1>
+                <h2 className={styles.title}>register your account</h2>
+                <Input placeholde='Your Name' type='text' value={name} onChange={setName}/>
+                <Input placeholde='E-mail' type='email' value={email} onChange={setEmail}/>
+                <Input placeholde='Password' type='password' value={password} onChange={setpassword}/>
+                <Button text='Register' disabled={false} onClick={register}/>
+                <Link to="/" className={styles.login}>I already have an account!</Link>
+            </CardLogin>
+        </div>
     );
 }

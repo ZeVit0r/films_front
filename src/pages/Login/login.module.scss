@@ -1,3 +1,13 @@
+.content {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--purple-500);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .logo {
     color: var(--purple-800);
     font-family: 'Courier New', Courier, monospace;

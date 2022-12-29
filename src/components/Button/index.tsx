@@ -1,15 +1,22 @@
+import { ReactElement } from "react";
+
+import {FormEvent} from 'react'
+
 import styles from "./button.module.scss"
 
 interface ButtonProps {
-    text: string;
+    text?: string;
     disabled: boolean;
-    onClick: () => void;
+    onClick: (e:FormEvent) => void;
+    children?: ReactElement;
+    height?: number;
+    width?: number;
 }
 
-export function Button({text, disabled, onClick}: ButtonProps) {
+export function Button({text, disabled, onClick, children, height, width}: ButtonProps) {
     return(
-        <button className={styles.button} onClick={onClick}>
-            {text}
+        <button className={styles.button} onClick={(e)=>onClick(e)} style={height != null ? {height:`${height}px`, width:`${width}px`} : {}}>
+            {children != null ? children : text}
         </button>
     );
 }

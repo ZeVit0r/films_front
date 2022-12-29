@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import styles from './navbar.module.scss'
 
 import { GiFilmSpool, GiFilmStrip, GiRoundStar, GiNotebook } from "react-icons/gi"
 import { BiLogOut } from 'react-icons/bi'
+import { useAuth } from '../../context/auth'
 
 
 interface NavbarProps {
@@ -11,6 +12,16 @@ interface NavbarProps {
 }
 
 export function Navbar( {}:NavbarProps ){
+    const {signOut} = useAuth()
+
+    const navigate = useNavigate();
+
+
+    function buttonSignOut(){
+        signOut();
+        navigate("/")
+    }
+
     return(
         <header className={styles.navbar}>
             <div className={styles.logo}>
@@ -33,7 +44,9 @@ export function Navbar( {}:NavbarProps ){
                 </li>
             </ul>
             <div className={styles.logout}>
-                <BiLogOut color="#FFF" size={32}/>
+                <button onClick={buttonSignOut}>
+                    <BiLogOut color="#FFF" size={32}/>
+                </button>
             </div>
         </header>
     );
