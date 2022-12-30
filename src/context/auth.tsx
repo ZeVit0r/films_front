@@ -30,18 +30,22 @@ export function AuthProvider( props: AuthProvider){
     const [user, setUser] = useState<User | null>(null)
 
     async function signIn(emailLogin: string, password: string) {
-        const response = await tstapi.post<AuthResponse>('/auth/signin', {
-            email: emailLogin,
-            password: password
-        })
-
-        const { token, email, name } = response.data.user
-
-        localStorage.setItem('@tst:token', token)
-
-        tstapi.defaults.headers.common.authorization = `Bearer ${token}`
-
-        setUser({email: email, name: name})
+        try {
+            const response = await tstapi.post<AuthResponse>('/auth/signin', {
+                email: emailLogin,
+                password: password
+            })
+    
+            const { token, email, name } = response.data.user
+    
+            localStorage.setItem('@tst:token', token)
+    
+            tstapi.defaults.headers.common.authorization = `Bearer ${token}`
+    
+            setUser({email: email, name: name})
+        } catch(e){
+            alert("login ou senha errados!")
+        }
     }
 
     function signOut() {
