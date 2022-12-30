@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AiFillHeart, AiOutlineComment} from 'react-icons/ai'
+import { ModalComments } from '../ModalComments'
 
 import styles from './cardFilm.module.scss'
 
@@ -14,6 +15,15 @@ interface FilmProps {
 
 export function CardFilm({imdbID, poster, title, year, favoriteFilm, isFavorite}: FilmProps){
 
+    const [modalCommentsOpen, setModalCommentsOpen] = useState(false)
+
+    function handleOpenModalComments() {
+        setModalCommentsOpen(true)
+    }
+
+    function handleCloseModalComments() {
+        setModalCommentsOpen(false)
+    }
 
     return(
         <div className={styles.container}>
@@ -29,10 +39,15 @@ export function CardFilm({imdbID, poster, title, year, favoriteFilm, isFavorite}
                     <p>favoritar</p>
                 </div>
                 <div className={styles.elementCard}>
-                    <AiOutlineComment size={32} className={styles.comment} />
+                    <button onClick={handleOpenModalComments}>
+                        <AiOutlineComment size={32} className={styles.comment} />
+                    </button>
                     <p>comentários</p>
                 </div>
             </div>
+
+            <ModalComments isOpen={modalCommentsOpen} onRequestClose={handleCloseModalComments} imdbID={imdbID}/>
+
         </div>
     )
 }

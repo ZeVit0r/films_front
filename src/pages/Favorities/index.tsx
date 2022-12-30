@@ -32,7 +32,7 @@ export function Favorities() {
         });
     }
 
-    const initialFetchFilms = async (imdbID: string) => {
+    const fetchFilms = async (imdbID: string) => {
         await omdbapi.get(`?i=${imdbID}&apikey=${import.meta.env.VITE_OMDB_KEY}`,{
         }).then(response => {setFavoritesFilms(favoritesFilms => [...favoritesFilms, response.data])});
     }
@@ -52,11 +52,9 @@ export function Favorities() {
 
     useEffect(()=>{
         idsFavoritesFilms.forEach(async (id)=>{
-            await initialFetchFilms(id)
+            await fetchFilms(id)
         })
     }, [isLoadIds])
-
-    console.log(favoritesFilms)
 
     return(
         <div className={styles.favorities}>

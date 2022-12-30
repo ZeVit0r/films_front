@@ -12,6 +12,8 @@ import { BiSearchAlt } from 'react-icons/bi'
 import styles from './home.module.scss'
 
 import { omdbapi, tstapi } from '../../services/api'
+import Modal from 'react-modal'
+import { ModalComments } from '../../components/ModalComments'
 
 interface FilmProps {
     Title: string,
@@ -22,11 +24,12 @@ interface FilmProps {
 
 export function Home(){
 
+    const JWTToken = localStorage.getItem('@tst:token')
+
     const [dataFilms, setDataFilms] = useState<FilmProps[]>([])
     const [searchFilms, setSearchFilms] = useState('')
     const [favoritesFilms, setFavoritesFilms] = useState<string[]>([])
 
-    const JWTToken = localStorage.getItem('@tst:token')
 
     const initialFetchFilms = async () => {
         await omdbapi.get(`?s=batman&apikey=${import.meta.env.VITE_OMDB_KEY}`,{
@@ -88,8 +91,6 @@ export function Home(){
     }, [])
 
     return(
-        <>
-        {
         <div className={styles.home}>
             <Navbar />
 
@@ -105,16 +106,22 @@ export function Home(){
                     {
                         dataFilms && dataFilms.map(film=>{
                             return(
-                                <CardFilm key={film.imdbID} title={film.Title} imdbID={film.imdbID} poster={film.Poster} year={film.Year} favoriteFilm={favoriteFilm} isFavorite={verifyIsFavorite(film.imdbID)}/>
+                                    <CardFilm 
+                                        key={film.imdbID} 
+                                        title={film.Title} 
+                                        imdbID={film.imdbID} 
+                                        poster={film.Poster} 
+                                        year={film.Year} 
+                                        favoriteFilm={favoriteFilm} 
+                                        isFavorite={verifyIsFavorite(film.imdbID)}/>
                             )
                         }
                         )
                     }
                 </div>
             </div >
-        </div>
-        }
-        </>
-        
+
+
+        </div>        
     )
 }

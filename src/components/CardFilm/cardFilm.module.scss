@@ -79,14 +79,17 @@
                 }
 
             }
+            button{
+                background-color: transparent;
+                border: none;
+                .comment{
+                    cursor: pointer;
+                    color: #ccc;
 
-            .comment{
-                cursor: pointer;
-                color: #ccc;
-
-                transition: 0.5s;
-                &:hover{
-                    color: rgba(201, 198, 239, 0.557);
+                    transition: 0.5s;
+                    &:hover{
+                        color: rgba(201, 198, 239, 0.557);
+                    }
                 }
             }
         }
